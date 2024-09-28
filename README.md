@@ -3,11 +3,8 @@ DiT Implementation in PyTorch
 
 ## DiT Tutorial Video
 
-## Sample Output for DiT  on MNIST and with LDM on CelebHQ
-Canny Edge Control - Top, Sample - Below
-
-<img src="https://github.com/user-attachments/assets/a52c53b3-b62e-4535-affa-1ee0d0321223" width="500">
-
+## Sample Output for DiT on CelebHQ
+___  
 
 This repository implements DiT in PyTorch for diffusion models. It provides code for the following:
 * Training and inference of VAE on CelebHQ
