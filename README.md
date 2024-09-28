@@ -13,7 +13,7 @@ Trained for 200 epochs
 ___  
 
 This repository implements DiT in PyTorch for diffusion models. It provides code for the following:
-* Training and inference of VAE on CelebHQ
+* Training and inference of VAE on CelebHQ (128x128 to 32x32x4 latents)
 * Training and Inference of DiT using trained VAE on CelebHQ
 * Configurable code for training all models from DIT-S to DIT-XL
 
@@ -21,6 +21,7 @@ This is very similar to official DiT implementation except the following changes
 * Since training is on celebhq its unconditional generation as of now (but can be easily modified to class conditional or text conditional as well)
 * Variance is fixed during training and not learned (like original DDPM)
 * No EMA 
+* Ability to train VAE
 * Ability to save latents of VAE for faster training
 
 
@@ -36,10 +37,10 @@ ___
 
 ### CelebHQ 
 For setting up on CelebHQ, simply download the images from the official repo of CelebMASK HQ [here](https://github.com/switchablenorms/CelebAMask-HQ?tab=readme-ov-file).
-
+and add it to `data` directory.
 Ensure directory structure is the following
 ```
-ControlNet-PyTorch
+DiT-PyTorch
     -> data
         -> CelebAMask-HQ
             -> CelebA-HQ-img
@@ -69,11 +70,21 @@ Once the config and dataset is setup:
 * For training and inference of Unconditional DiT follow [this section](#training-unconditional-dit)
 
 ## Training AutoEncoder for DiT
-* For training autoencoder on celebhq follow along the instructions provided in ControlNet repo [here](https://github.com/explainingai-code/ControlNet-PyTorch/tree/main?tab=readme-ov-file#training-autoencoder-for-ldm)
-* Make sure to have `save_latent`
+* For training autoencoder on celebhq,ensure the right path is mentioned in `celebhq.yaml`
+* For training autoencoder on your own dataset 
+  * Create your own config and have the path point to images (look at celebhq.yaml for guidance)
+  * Create your own dataset class, similar to celeb_dataset.py
+* Call the desired dataset class in training file [here](https://github.com/explainingai-code/DiT-PyTorch/blob/main/tools/train_vae.py#L49)
+* For training autoencoder run ```python -m tools.train_vae --config config/celebhq.yaml``` for training autoencoder with the desire config file
+* For inference make sure `save_latent` is `True` in the config
+* For inference run ```python -m tools.infer_vae --config config/celebhq.yaml``` for generating reconstructions and saving latents with right config file.
 
 ## Training Unconditional DiT
 Train the autoencoder first and setup dataset accordingly.
+
+For training unconditional DiT ensure the right dataset is used in `train_vae_dit.py`
+* ```python -m tools.train_vae_dit --config config/celebhq.yaml``` for training unconditional ldm using right config
+* ```python -m tools.sample_vae_dit --config config/celebhq.yaml``` for generating images using trained ldm
 
 
 ## Output 

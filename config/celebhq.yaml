@@ -1,0 +1,57 @@
+dataset_params:
+  im_path: 'data/CelebAMask-HQ'
+  im_size : 128
+  im_channels : 3
+
+diffusion_params:
+  num_timesteps : 1000
+  beta_start : 0.0001
+  beta_end : 0.02
+
+dit_params:
+  patch_size : 2
+  num_layers : 12
+  hidden_size : 768
+  num_heads : 12
+  head_dim : 64
+  timestep_emb_dim : 768
+
+autoencoder_params:
+  z_channels: 4
+  codebook_size : 8192
+  down_channels : [128, 256, 384]
+  mid_channels : [384]
+  down_sample : [True, True]
+  attn_down : [False, False]
+  norm_channels: 32
+  num_heads: 4
+  num_down_layers : 2
+  num_mid_layers : 2
+  num_up_layers : 2
+
+
+train_params:
+  seed : 1111
+  task_name: 'celebhq'
+  autoencoder_batch_size: 4
+  autoencoder_epochs: 3
+  autoencoder_lr: 0.00001
+  autoencoder_acc_steps: 1
+  disc_start: 7500
+  disc_weight: 0.5
+  codebook_weight: 1
+  commitment_beta: 0.2
+  perceptual_weight: 1
+  kl_weight: 0.000005
+  autoencoder_img_save_steps: 64
+  save_latents: False
+  dit_batch_size: 32
+  dit_epochs: 500
+  num_samples: 1
+  num_grid_rows: 2
+  dit_lr: 0.00001
+  dit_acc_steps: 1
+  vae_latent_dir_name: 'vae_latents'
+  dit_ckpt_name: 'dit_ckpt.pth'
+  vae_autoencoder_ckpt_name: 'vae_autoencoder_ckpt.pth'
+  vae_discriminator_ckpt_name: 'vae_discriminator_ckpt.pth'
