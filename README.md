@@ -17,7 +17,7 @@ This repository implements DiT in PyTorch for diffusion models. It provides code
 * Training and Inference of DiT using trained VAE on CelebHQ
 * Configurable code for training all models from DIT-S to DIT-XL
 
-This is very similar to official DiT implementation except the following changes.
+This is very similar to [official DiT implementation](https://github.com/facebookresearch/DiT) except the following changes.
 * Since training is on celebhq its unconditional generation as of now (but can be easily modified to class conditional or text conditional as well)
 * Variance is fixed during training and not learned (like original DDPM)
 * No EMA 
@@ -104,6 +104,19 @@ During training and inference of unconditional DiT following output will be save
 * During training we will save the latest checkpoint in ```task_name``` directory
 * During sampling, unconditional sampled image grid for all timesteps in ```task_name/samples/*.png``` . The final decoded generated image will be `x0_0.png`. Images from `x0_999.png` to `x0_1.png` will be latent image predictions of denoising process from T=999 to T=1. Generated Image is at T=0
 
+
+## Citations
+```
+@misc{peebles2023scalablediffusionmodelstransformers,
+      title={Scalable Diffusion Models with Transformers}, 
+      author={William Peebles and Saining Xie},
+      year={2023},
+      eprint={2212.09748},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2212.09748}, 
+}
+```
 
 
 
