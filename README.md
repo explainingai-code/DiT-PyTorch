@@ -2,8 +2,14 @@ DiT Implementation in PyTorch
 ========
 
 ## DiT Tutorial Video
+<img alt="DiT Tutorial" src="https://github.com/user-attachments/assets/2b0deffa-0181-4676-b79f-fec9b12d8326"
+   width="400">
 
 ## Sample Output for DiT on CelebHQ
+Trained for 200 epochs
+
+<img src="https://github.com/user-attachments/assets/3fea7f05-3834-4a60-bab4-d4d10b1777e8" width="750">
+
 ___  
 
 This repository implements DiT in PyTorch for diffusion models. It provides code for the following:
