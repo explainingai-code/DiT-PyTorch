@@ -7,7 +7,6 @@ from tqdm import tqdm
 from torch.optim import AdamW
 from dataset.celeb_dataset import CelebDataset
 from torch.utils.data import DataLoader
-from torch.optim.lr_scheduler import MultiStepLR
 from model.transformer import DIT
 from model.vae import VAE
 from scheduler.linear_scheduler import LinearNoiseScheduler
@@ -33,14 +32,6 @@ def train(args):
     dit_model_config = config['dit_params']
     autoencoder_model_config = config['autoencoder_params']
     train_config = config['train_params']
-    # seed = 1111
-    # torch.manual_seed(seed)
-    # np.random.seed(seed)
-    # import random
-    # random.seed(seed)
-    # if device == 'cuda':
-    #     torch.cuda.manual_seed_all(seed)
-    # torch.mps.manual_seed(seed)
 
     # Create the noise scheduler
     scheduler = LinearNoiseScheduler(num_timesteps=diffusion_config['num_timesteps'],
@@ -91,7 +82,6 @@ def train(args):
     # Specify training parameters
     num_epochs = train_config['dit_epochs']
     optimizer = AdamW(model.parameters(), lr=1E-5, weight_decay=0)
-    lr_scheduler = MultiStepLR(optimizer, milestones=[50000], gamma=0.5)
     criterion = torch.nn.MSELoss()
 
     # Run training
@@ -132,14 +122,11 @@ def train(args):
             if step_count % acc_steps == 0:
                 optimizer.step()
                 optimizer.zero_grad()
-            if (step_count -1) % 100 == 0:
-                print(np.mean(losses))
         optimizer.step()
         optimizer.zero_grad()
         print('Finished epoch:{} | Loss : {:.4f}'.format(
             epoch_idx + 1,
             np.mean(losses)))
-        lr_scheduler.step()
         torch.save(model.state_dict(), os.path.join(train_config['task_name'],
                                                     train_config['dit_ckpt_name']))
 
