@@ -2,8 +2,10 @@ Diffusion Transformers(DiT) Implementation in PyTorch
 ========
 
 ## DiT Tutorial Video
-<img alt="DiT Tutorial" src="https://github.com/user-attachments/assets/2b0deffa-0181-4676-b79f-fec9b12d8326"
+<a href="https://youtu.be/aSLDXdc2hkk">
+   <img alt="DiT Tutorial" src="https://github.com/user-attachments/assets/2b0deffa-0181-4676-b79f-fec9b12d8326"
    width="400">
+</a>
 
 ## Sample Output for DiT on CelebHQ
 Trained for 200 epochs
