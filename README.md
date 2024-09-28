@@ -1,4 +1,4 @@
-DiT Implementation in PyTorch
+Diffusion Transformers(DiT) Implementation in PyTorch
 ========
 
 ## DiT Tutorial Video
