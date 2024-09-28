@@ -52,8 +52,9 @@ ControlNet-PyTorch
 * ```config/celebhq.yaml``` - Configuration used for celebhq dataset
 
 <ins>Important configuration parameters</ins>
-autoencoder_acc_steps : For accumulating gradients if image size is too large and a large batch size cant be used.
-save_latents : Enable this to save the latents , during inference of autoencoder. That way DiT training will be faster
+
+* `autoencoder_acc_steps` : For accumulating gradients if image size is too large and a large batch size cant be used.
+* `save_latents` : Enable this to save the latents , during inference of autoencoder. That way DiT training will be faster
 
 ___  
 ## Training
