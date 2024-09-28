@@ -85,8 +85,8 @@ Once the config and dataset is setup:
 Train the autoencoder first and setup dataset accordingly.
 
 For training unconditional DiT ensure the right dataset is used in `train_vae_dit.py`
-* ```python -m tools.train_vae_dit --config config/celebhq.yaml``` for training unconditional ldm using right config
-* ```python -m tools.sample_vae_dit --config config/celebhq.yaml``` for generating images using trained ldm
+* ```python -m tools.train_vae_dit --config config/celebhq.yaml``` for training unconditional DiT using right config
+* ```python -m tools.sample_vae_dit --config config/celebhq.yaml``` for generating images using trained DiT
 
 
 ## Output 
