@@ -29,10 +29,11 @@ This is very similar to [official DiT implementation](https://github.com/faceboo
 
 ## Setup
 * Create a new conda environment with python 3.10 then run below commands
+* `conda activate <environment_name>`
 * ```git clone https://github.com/explainingai-code/DiT-PyTorch.git```
 * ```cd DiT-PyTorch```
 * ```pip install -r requirements.txt```
-* Download lpips weights from https://github.com/richzhang/PerceptualSimilarity/blob/master/lpips/weights/v0.1/vgg.pth and put it in `models/weights/v0.1/vgg.pth`
+*  Download lpips weights by opening this link in browser(dont use cURL or wget) https://github.com/richzhang/PerceptualSimilarity/blob/master/lpips/weights/v0.1/vgg.pth and downloading the raw file. Place the downloaded weights file in ```models/weights/v0.1/vgg.pth```
 ___  
 
 ## Data Preparation
