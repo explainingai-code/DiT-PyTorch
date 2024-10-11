@@ -67,5 +67,5 @@ class TransformerLayer(nn.Module):
         out = out + post_attn_scale.unsqueeze(1) * self.attn_block(attn_norm_output)
         mlp_norm_output = (self.ff_norm(out) * (1 + pre_mlp_scale.unsqueeze(1)) +
                            pre_mlp_shift.unsqueeze(1))
-        out = out + post_mlp_scale.unsqueeze(1) * self.attn_block(mlp_norm_output)
+        out = out + post_mlp_scale.unsqueeze(1) * self.mlp_block(mlp_norm_output)
         return out
