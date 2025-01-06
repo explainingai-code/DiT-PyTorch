@@ -95,7 +95,6 @@ def train(args):
         step_count = 0
         for im in tqdm(data_loader):
             step_count += 1
-            optimizer.zero_grad()
             im = im.float().to(device)
             if im_dataset.use_latents:
                 mean, logvar = torch.chunk(im, 2, dim=1)
